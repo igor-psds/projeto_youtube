@@ -20,7 +20,7 @@ function App() {
             <Menu openMenu={openMenu} />
             <RoutesContainer>
               <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='/' element={<Home openMenu={openMenu} />} />
                 <Route path='/library' element={<Library />} />
                 <Route path='/history' element={<History />} />
               </Routes>

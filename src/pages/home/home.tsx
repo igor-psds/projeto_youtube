@@ -15,7 +15,11 @@ const items = [
     {name: 'Conversas', link: '/'}
 ];
 
-function Home(){
+interface IProps {
+    openMenu: boolean;
+}
+
+function Home({ openMenu }: IProps){
     return (
         <Container>
             <HeaderHome>
@@ -27,7 +31,7 @@ function Home(){
                     ))}
                 </NavMenu>
             </HeaderHome>
-            <ContainerVideos>
+            <ContainerVideos openMenu={openMenu}>
                 <VideoComponent />
                 <VideoComponent />
                 <VideoComponent />
