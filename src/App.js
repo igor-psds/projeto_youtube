@@ -5,6 +5,7 @@ import Menu from "./components/menu/menu";
 import Home from './pages/home/home';
 import Library from './pages/library/library';
 import History from './pages/history/history';
+import { RoutesContainer } from './components/routesContainer/routesContainer';
 import { GlobalMenuContext } from './contexts/menuContext';
 
 function App() {
@@ -17,13 +18,13 @@ function App() {
           <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
           <div style={{ width: '100%', display: 'flex' }}>
             <Menu openMenu={openMenu} />
-            <div style={{width: '100%', padding: '50px 70px', boxSizing: 'border-box', display: 'flex', justifyContent: 'center'}} >
+            <RoutesContainer>
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/library' element={<Library />} />
                 <Route path='/history' element={<History />} />
               </Routes>
-            </div>
+            </RoutesContainer>
           </div>
         </GlobalMenuContext.Provider>
       </div>

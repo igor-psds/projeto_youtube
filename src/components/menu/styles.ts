@@ -11,7 +11,7 @@ export const Container = styled.div<{ openMenu: boolean }>`
     overflow-y: auto;
     overflow-x: hidden;
     position: sticky;
-    top: 55px
+    top: 55px;
 `;
 
 export const MenuItem = styled.div<{ openMenu: boolean }>`

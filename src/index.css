@@ -13,6 +13,10 @@ code {
 }
 
 * {
+  padding: 0%;
+}
+
+* {
   scrollbar-width: 10px;
   scrollbar-color: #8c8c8c;
 }
