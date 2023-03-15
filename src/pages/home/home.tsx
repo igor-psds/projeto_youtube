@@ -72,7 +72,7 @@ function Home({ openMenu }: IProps){
             <Divisor />
             <ShortsContainerTitle>
                 <ShortsTitleImage alt="" src= {ShortsIcon} />
-                <h4>Shorts</h4>
+                <h3>Shorts</h3>
             </ShortsContainerTitle>
             <ContainerShorts openMenu={openMenu}>
                 <ShortsComponent />
