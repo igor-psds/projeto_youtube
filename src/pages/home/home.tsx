@@ -1,5 +1,17 @@
 import VideoComponent from "../../components/videoComponent/videoComponent";
-import { Container,HeaderHome, NavMenu, NavMenuItem, ContainerVideos } from "./styles";
+import ShortsComponent from "../../components/shortsComponent/shortsComponent";
+import ShortsIcon from '../..//assets/icons/icon_cellphone.png';
+import { 
+    Container,
+    HeaderHome,
+    NavMenu,
+    NavMenuItem,
+    ContainerVideos,
+    Divisor,
+    ShortsContainerTitle,
+    ShortsTitleImage,
+    ContainerShorts 
+} from "./styles";
 
 const items = [
     {name: 'Tudo', link: '/'},
@@ -53,7 +65,30 @@ function Home({ openMenu }: IProps){
                 <VideoComponent />
                 <VideoComponent />
                 <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
             </ContainerVideos>
+            <Divisor />
+            <ShortsContainerTitle>
+                <ShortsTitleImage alt="" src= {ShortsIcon} />
+                <h4>Shorts</h4>
+            </ShortsContainerTitle>
+            <ContainerShorts openMenu={openMenu}>
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+                <ShortsComponent />
+            </ContainerShorts>
+            <Divisor />
         </Container>
     )
 }
