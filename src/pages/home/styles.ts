@@ -96,9 +96,10 @@ export const ShortsTitleImage = styled.img`
 export const ContainerShorts = styled.div<{ openMenu: boolean }>`
     width: 100%;
     max-width: 1600px;
-    padding: 0px 0px 0px 13px;
+    box-sizing: border-box;
+    padding: 0px 13px 0px 13px;
     display: grid;
-    grid-template-columns: ${({ openMenu}) => openMenu? 'repeat(6, 1fr)' : 'repeat(7, 1fr)'};
-    column-gap: 20px;
+    grid-template-columns: ${({ openMenu}) => openMenu? 'repeat(7, 1fr)' : 'repeat(8, 1fr)'};
+    column-gap: 10px;
     row-gap: 50px;
 `;
