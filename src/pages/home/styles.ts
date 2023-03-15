@@ -34,8 +34,14 @@ export const NavMenu = styled.nav`
     align-items: center;
     justify-content: space-between;
     overflow: auto;
-    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: pre-line;
     background-color: #fff;
+
+    ::-webkit-scrollbar {
+        height: 4px;
+    }
 `;
 
 export const NavMenuItem = styled.li`
@@ -43,12 +49,13 @@ export const NavMenuItem = styled.li`
     width: auto;
     height: auto;
     padding: 1px 5px 3px 5px;
+    margin: 5px;
     border-radius: 5px;
     cursor: pointer;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: #f4f4f4;
 
     :hover {

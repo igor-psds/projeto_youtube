@@ -18,7 +18,7 @@ function App() {
           <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
           <div style={{ width: '100%', display: 'flex' }}>
             <Menu openMenu={openMenu} />
-            <RoutesContainer>
+            <RoutesContainer openMenu={openMenu}>
               <Routes>
                 <Route path='/' element={<Home openMenu={openMenu} />} />
                 <Route path='/library' element={<Library />} />

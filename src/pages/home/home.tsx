@@ -7,12 +7,16 @@ const items = [
     {name: 'Música', link: '/'},
     {name: 'Jogos', link: '/'},
     {name: 'Chill out', link: '/'},
-    {name: 'Comédia de esquetes', link: '/'},
+    {name: 'K-Pop', link: '/'},
     {name: 'Piano', link: '/'},
-    {name: 'Jogos de ação e aventura', link: '/'},
-    {name: 'Filmes de comédia', link: '/'},
+    {name: 'Alimentação', link: '/'},
+    {name: 'Peixes', link: '/'},
     {name: 'Natureza', link: '/'},
-    {name: 'Conversas', link: '/'}
+    {name: 'Conversas', link: '/'},
+    {name: 'Basquete', link: '/'},
+    {name: 'Notícias', link: '/'},
+    {name: 'Podcast', link: '/'},
+    {name: 'Animação', link: '/'}
 ];
 
 interface IProps {
