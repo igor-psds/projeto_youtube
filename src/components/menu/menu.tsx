@@ -40,7 +40,7 @@ const items2 = [
     {name: 'Biblioteca', link: '/library', src: LibraryIcon},
     {name: 'Histórico', link: '/history', src: HistoryIcon}
 ];
-const items3 = [{name: 'Fazer Login', link: '/sign_in', src: LoginIcon}];
+const items3 = [{name: 'Fazer Login', link: '/sign-in', src: LoginIcon}];
 const items4 = [
     {name: 'Em alta', link: '/trending', src: TrendingIcon},
     {name: 'Música', link: '/music', src: MusicIcon},
@@ -61,9 +61,9 @@ const items6 = [
 ];
 const items7 = [
     {name: 'Configurações', link: '/library', src: SettingsIcon},
-    {name: 'Histórico de denúncia', link: '/history', src: ReportIcon},
-    {name: 'Ajuda', link: '/history', src: HelpIcon},
-    {name: 'Enviar feedback', link: '/history', src: FeedbackIcon}
+    {name: 'Histórico de denúncia', link: '/reporthistory', src: ReportIcon},
+    {name: 'Ajuda', link: '/help', src: HelpIcon},
+    {name: 'Enviar feedback', link: '/feedback', src: FeedbackIcon}
 ];
 
 interface IProps {

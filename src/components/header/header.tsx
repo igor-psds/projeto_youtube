@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { 
     Container,
     LogoContainer,
@@ -16,9 +17,14 @@ import MicIcon from '../../assets/microfone_yt_project.png';
 import VideoIcon from '../../assets/camera_yt_project.png';
 import NotificationIcon from '../../assets/sino_yt_project.png';
 import { useGlobalMenuContext } from "../../contexts/menuContext";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 function Header(){
-    const { openMenu, setOpenMenu } = useGlobalMenuContext()
+    const { login } = useContext(UserContext);
+
+    const { openMenu, setOpenMenu } = useGlobalMenuContext();
+    const navigate = useNavigate();
 
     return (
         <Container>
@@ -52,9 +58,14 @@ function Header(){
                 <ButtonContainer margin='0 0 0 10px' >
                     <ButtonIcon alt="" src={NotificationIcon} />
                 </ButtonContainer>
-                <ButtonContainer margin='0 0 0 10px' >
-                    I
-                </ButtonContainer>
+
+                {login? 
+                    <ButtonContainer margin='0 0 0 10px' >
+                        I
+                    </ButtonContainer>
+                :
+                    <button onClick={() => navigate('/login')} >Fazer Login</button>
+                }
             </HeaderButton>
 
 

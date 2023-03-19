@@ -59,7 +59,7 @@ export const NavMenuItem = styled.li`
     background-color: #f4f4f4;
 
     :hover {
-        background-color: #f1f1f1;
+        background-color: #f0f0f0;
     }
 `;
 
