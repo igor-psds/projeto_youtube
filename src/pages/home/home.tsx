@@ -31,6 +31,65 @@ const items = [
     {name: 'Animação', link: '/'}
 ];
 
+const videos = [
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+    {
+        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
+        title: 'Low Roar - "Everything To Lose"',
+        channel: 'LOWROARMUSIC',
+        views: '148 mil',
+        time: ' 1 ano'
+    },
+];
+
 interface IProps {
     openMenu: boolean;
 }
@@ -48,26 +107,9 @@ function Home({ openMenu }: IProps){
                 </NavMenu>
             </HeaderHome>
             <ContainerVideos openMenu={openMenu}>
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
-                <VideoComponent />
+                {videos.map((video) => (
+                    <VideoComponent video={video} />
+                ))}
             </ContainerVideos>
             <Divisor />
             <ShortsContainerTitle>

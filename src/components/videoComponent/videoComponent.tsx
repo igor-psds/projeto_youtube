@@ -1,18 +1,18 @@
 import { ChannelImage, Container, ImageBanner, TextCard, TextContainer, Title, TitleContainer } from "./styles";
 
-function VideoComponent(){
+function VideoComponent({ video }: any){
 
     return (
         <Container>
-            <ImageBanner src="https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw" />
+            <ImageBanner src={video.image} />
             <TitleContainer>
                 <ChannelImage>
-                    IP
+                    I
                 </ChannelImage>
                 <TextContainer>
-                    <Title>Low Roar - "Everything To Lose"</Title>
-                    <TextCard>LOWROARMUSIC</TextCard>
-                    <TextCard>148 mil visualizações - há 1 ano</TextCard>
+                    <Title>{video.title}</Title>
+                    <TextCard>{video.channel}</TextCard>
+                    <TextCard>{video.views} visualizações - há {video.time}</TextCard>
                 </TextContainer>
             </TitleContainer>
         </Container>

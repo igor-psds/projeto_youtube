@@ -21,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 
 function Header(){
-    const { login } = useContext(UserContext);
+    const { login, logOut } = useContext(UserContext);
 
     const { openMenu, setOpenMenu } = useGlobalMenuContext();
     const navigate = useNavigate();
@@ -60,9 +60,12 @@ function Header(){
                 </ButtonContainer>
 
                 {login? 
-                    <ButtonContainer margin='0 0 0 10px' >
-                        I
-                    </ButtonContainer>
+                    <>
+                        <ButtonContainer margin='0 0 0 10px' >
+                            I
+                        </ButtonContainer>
+                        <span onClick={() => logOut()}>Sair</span>
+                    </>
                 :
                     <button onClick={() => navigate('/login')} >Fazer Login</button>
                 }

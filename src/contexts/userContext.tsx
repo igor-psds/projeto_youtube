@@ -19,7 +19,13 @@ export const UserStorage = ({ children }: any) => {
 
     useEffect(() => {
         getUser(token);
-    }, [token])
+    }, [token]);
+
+    const logOut = () => {
+        localStorage.removeItem('token');
+        setLogin(false);
+        setUser({});
+    }
 
     const handleLogin = (email: string, password: string) => {
         api.post('/user/sign-in', {email, password}).then(({ data }) => {
@@ -36,7 +42,8 @@ export const UserStorage = ({ children }: any) => {
         <UserContext.Provider value={{
             login,
             user,
-            handleLogin
+            handleLogin,
+            logOut
         }}>
             {children}
         </UserContext.Provider>
