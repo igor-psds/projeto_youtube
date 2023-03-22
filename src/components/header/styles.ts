@@ -71,6 +71,29 @@ export const SearchButton = styled.div`
 `;
 
 export const HeaderButton = styled.div`
-    width: 200px;
+    width: 220px;
     display: flex;
+`;
+
+export const SignInButton = styled.button`
+    width: 110px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #f1f1f1;
+    border-radius: 18px;
+    background-color: #fff;
+    padding: 2px 0px;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+
+    :hover {
+        background-color: #f2f2f2;
+    }
+`;
+
+export const SignInButtonIcon = styled.img`
+    width: 25px;
+    margin-right: 7px;
 `;
