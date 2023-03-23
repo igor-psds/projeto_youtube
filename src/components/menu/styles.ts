@@ -43,7 +43,7 @@ export const ButtonIcon = styled.img`
 
 export const Divisor = styled.hr<{ openMenu: boolean }>`
     width: 100%;
-    border-top: 3px solid #bbb;
+    border-top: 1px solid #bbb;
     display: ${({ openMenu }) => openMenu? '' : 'none'};
 `;
 

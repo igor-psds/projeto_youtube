@@ -11,6 +11,7 @@ export const Container = styled.header`
     justify-content: space-between;
     position: sticky;
     top: 0;
+    z-index: 1;
 `;
 
 export const LogoContainer = styled.div`
@@ -73,6 +74,7 @@ export const SearchButton = styled.div`
 export const HeaderButton = styled.div`
     width: 220px;
     display: flex;
+    background-color: pink;
 `;
 
 export const SignInButton = styled.button`
@@ -96,4 +98,49 @@ export const SignInButton = styled.button`
 export const SignInButtonIcon = styled.img`
     width: 25px;
     margin-right: 7px;
+`;
+
+export const DropdownProfile = styled.div`
+    min-width: 250px;
+    position: absolute;
+    top: 47.6px;
+    right: 70px;
+    padding: 0px 0px 5px 0px;
+    border-radius: 10px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    z-index: 2;
+    overflow-x: hidden;
+`;
+
+export const Divisor = styled.hr`
+    width: 100%;
+    border-top: 1px solid #bbb;
+`;
+
+export const DropdownItem = styled.div`
+    width: 100%;
+    min-height: 45px;
+    cursor: pointer;
+    padding: 2px 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    span {
+        font-weight: 600;
+        margin-left: 20px;
+        font-size: 16px;
+    }
+
+    :hover {
+        background-color: #f2f2f2;
+    }
+`;
+
+export const DropdownIcon = styled.img`
+    width: 25px;
 `;

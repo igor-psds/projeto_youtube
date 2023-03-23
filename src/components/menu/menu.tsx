@@ -60,7 +60,7 @@ const items6 = [
     {name: 'YouTube TV', link: '/yt_tv', src: YtTvIcon}
 ];
 const items7 = [
-    {name: 'Configurações', link: '/library', src: SettingsIcon},
+    {name: 'Configurações', link: '/settings', src: SettingsIcon},
     {name: 'Histórico de denúncia', link: '/reporthistory', src: ReportIcon},
     {name: 'Ajuda', link: '/help', src: HelpIcon},
     {name: 'Enviar feedback', link: '/feedback', src: FeedbackIcon}
