@@ -34,6 +34,21 @@ export const ButtonContainer = styled.div<{ margin?: string }>`
     }
 `;
 
+export const ButtonContainerProfile = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 0 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    :hover {
+        background-color: #f2f2f2;
+    }
+`;
+
 export const ButtonIcon = styled.img`
     width: 20px;
 `;
@@ -74,7 +89,6 @@ export const SearchButton = styled.div`
 export const HeaderButton = styled.div`
     width: 220px;
     display: flex;
-    background-color: pink;
 `;
 
 export const SignInButton = styled.button`
@@ -100,15 +114,17 @@ export const SignInButtonIcon = styled.img`
     margin-right: 7px;
 `;
 
-export const DropdownProfile = styled.div`
+export const DropdownProfile = styled.div<{ openDropdown: boolean }>`
     min-width: 250px;
     position: absolute;
     top: 47.6px;
     right: 70px;
     padding: 0px 0px 5px 0px;
     border-radius: 10px;
-    background-color: aqua;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     display: flex;
+    display: ${({ openDropdown }) => openDropdown? 'flex' : 'none'};
     flex-direction: column;
     overflow: auto;
     z-index: 2;
@@ -143,4 +159,9 @@ export const DropdownItem = styled.div`
 
 export const DropdownIcon = styled.img`
     width: 25px;
+`;
+
+export const ArrowRight = styled.img<{ margin?: string }>`
+    width: 18px;
+    margin: ${({ margin }) => margin? margin : 0};
 `;

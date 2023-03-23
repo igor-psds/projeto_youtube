@@ -1,8 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { 
     Container,
     LogoContainer,
     ButtonContainer,
+    ButtonContainerProfile,
     ButtonIcon,
     SearchContainer,
     SearchInputContainer,
@@ -14,7 +15,8 @@ import {
     DropdownProfile,
     Divisor,
     DropdownItem,
-    DropdownIcon
+    DropdownIcon,
+    ArrowRight
  } from "./styles";
 import HamburgerIcon from '../../assets/hamburger_yt_project.png';
 import Logo from '../../assets/yt-logo_yt_project.png';
@@ -26,12 +28,26 @@ import LoginIcon from '../../assets/icons/icon_user.png';
 import { useGlobalMenuContext } from "../../contexts/menuContext";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
+import ChannelIcon from '../../assets/icons/icon_channel.png';
+import CamIcon from '../../assets/icons/icon_camcorder.png';
+import SwitchAccountIcon from '../../assets/icons/icon_user-account.png';
+import LogOutIcon from '../../assets/icons/icon_logout.png';
+import CoinIcon from '../../assets/icons/icon_coin.png';
+import InformationIcon from '../../assets/icons/icon_personal-information.png';
+import ThemeIcon from '../../assets/icons/icon_theme.png';
+import LanguageIcon from '../../assets/icons/icon_language.png';
+import ShieldIcon from '../../assets/icons/icon_shield.png';
+import GlobeIcon from '../../assets/icons/icon_globe.png';
+import KeyboardIcon from '../../assets/icons/icon_keyboard.png';
 import SettingsIcon from '../../assets/icons/icon_settings.png';
 import HelpIcon from '../../assets/icons/icon_question.png';
+import ArrowRightIcon from '../../assets/icons/icon_right.png';
 import FeedbackIcon from '../../assets/icons/icon_feedback.png';
 
 function Header(){
     const { login, logOut } = useContext(UserContext);
+
+    const [openDropdown, setOpenDropdown] = useState(false);
 
     const { openMenu, setOpenMenu } = useGlobalMenuContext();
     const navigate = useNavigate();
@@ -72,58 +88,74 @@ function Header(){
 
                 {login? 
                     <>
-                        <ButtonContainer margin='0 0 0 20px' >
+                        <ButtonContainerProfile onClick={() => setOpenDropdown(!openDropdown)} >
                             I
-                        </ButtonContainer>
-                        <DropdownProfile>
+                        </ButtonContainerProfile>
+                        <DropdownProfile openDropdown={openDropdown} >
                             <DropdownItem>
-                                <span>Your Channel</span>
+                                <DropdownIcon alt="" src={ChannelIcon} />
+                                <span>Seu canal</span>
                             </DropdownItem>
                             <DropdownItem onClick={() => navigate('/')} >
+                                <DropdownIcon alt="" src={CamIcon} />
                                 <span>YouTube Studio</span>
                             </DropdownItem>
                             <DropdownItem>
-                                <span>Switch account</span>
+                                <DropdownIcon alt="" src={SwitchAccountIcon} />
+                                <span>Alternar conta</span>
+                                <ArrowRight margin='0 0 0 99px' alt="" src={ArrowRightIcon} />
                             </DropdownItem>
                             <DropdownItem onClick={() => logOut()} >
+                                <DropdownIcon alt="" src={LogOutIcon} />
                                 <span>Sair</span>
                             </DropdownItem>
                             <Divisor />
                             <DropdownItem>
-                                <span>Purchases and memberships</span>
+                                <DropdownIcon alt="" src={CoinIcon} />
+                                <span>Compras e assinaturas</span>
                             </DropdownItem>
                             <DropdownItem>
-                                <span>Your data in YouTube</span>
+                                <DropdownIcon alt="" src={InformationIcon} />
+                                <span>Seus dados no YouTube</span>
                             </DropdownItem>
                             <Divisor />
                             <DropdownItem>
-                                <span>Appearence: Light theme</span>
+                                <DropdownIcon alt="" src={ThemeIcon} />
+                                <span>Aparência: Tema claro</span>
+                                <ArrowRight margin='0 0 0 44px' alt="" src={ArrowRightIcon} />
                             </DropdownItem>
                             <DropdownItem>
-                                <span>Language: English</span>
+                                <DropdownIcon alt="" src={LanguageIcon} />
+                                <span>Idioma: Português</span>
+                                <ArrowRight margin='0 0 0 69px' alt="" src={ArrowRightIcon} />
                             </DropdownItem>
                             <DropdownItem>
-                                <span>Restricted Mode: Off</span>
+                                <DropdownIcon alt="" src={ShieldIcon} />
+                                <span>Modo restrito: desativado</span>
+                                <ArrowRight margin='0 0 0 15px' alt="" src={ArrowRightIcon} />
                             </DropdownItem>
                             <DropdownItem>
-                                <span>Location: United States</span>
+                                <DropdownIcon alt="" src={GlobeIcon} />
+                                <span>Local: Brasil</span>
+                                <ArrowRight margin='0 0 0 117px' alt="" src={ArrowRightIcon} />
                             </DropdownItem>
                             <DropdownItem>
-                                <span>Keyboard shortcuts</span>
+                                <DropdownIcon alt="" src={KeyboardIcon} />
+                                <span>Atalhos do teclado</span>
                             </DropdownItem>
                             <Divisor />
                             <DropdownItem  onClick={() => navigate('/settings')} >
                                 <DropdownIcon alt="" src={SettingsIcon} />
-                                <span>Settings</span>
+                                <span>Configurações</span>
                             </DropdownItem>
                             <Divisor />
                             <DropdownItem  onClick={() => navigate('/help')} >
                                 <DropdownIcon alt="" src={HelpIcon} />
-                                <span>Help</span>
+                                <span>Ajuda</span>
                             </DropdownItem>
                             <DropdownItem  onClick={() => navigate('/feedback')} >
                                 <DropdownIcon alt="" src={FeedbackIcon} />
-                                <span>Send feedback</span>
+                                <span>Enviar feedback</span>
                             </DropdownItem>
                         </DropdownProfile>
                     </>
