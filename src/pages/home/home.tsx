@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import VideoComponent from "../../components/videoComponent/videoComponent";
 import ShortsComponent from "../../components/shortsComponent/shortsComponent";
 import ShortsIcon from '../..//assets/icons/icon_cellphone.png';
+import ArrowDownIcon from '../../assets/icons/icon_down.png';
 import { 
     Container,
     HeaderHome,
@@ -10,7 +12,9 @@ import {
     Divisor,
     ShortsContainerTitle,
     ShortsTitleImage,
-    ContainerShorts 
+    ContainerShorts,
+    ButtonShorts,
+    ArrowDown
 } from "./styles";
 
 const items = [
@@ -95,6 +99,9 @@ interface IProps {
 }
 
 function Home({ openMenu }: IProps){
+    
+    const [openShorts, setOpenShorts] = useState(false);
+
     return (
         <Container>
             <HeaderHome>
@@ -111,15 +118,12 @@ function Home({ openMenu }: IProps){
                     <VideoComponent video={video} />
                 ))}
             </ContainerVideos>
-            <Divisor />
+            <Divisor margin='35px 0px 5px 0px' />
             <ShortsContainerTitle>
                 <ShortsTitleImage alt="" src= {ShortsIcon} />
                 <h3>Shorts</h3>
             </ShortsContainerTitle>
-            <ContainerShorts openMenu={openMenu}>
-                <ShortsComponent />
-                <ShortsComponent />
-                <ShortsComponent />
+            <ContainerShorts openMenu={openMenu} openShorts={openShorts} >
                 <ShortsComponent />
                 <ShortsComponent />
                 <ShortsComponent />
@@ -130,7 +134,10 @@ function Home({ openMenu }: IProps){
                 <ShortsComponent />
                 <ShortsComponent />
             </ContainerShorts>
-            <Divisor />
+                <ButtonShorts onClick={() => setOpenShorts(!openShorts)}>
+                    <ArrowDown alt="" src={ArrowDownIcon} />
+                </ButtonShorts>
+            <Divisor margin='1px 0px 5px 0px' />
         </Container>
     )
 }

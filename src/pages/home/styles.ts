@@ -72,9 +72,9 @@ export const ContainerVideos = styled.div<{ openMenu: boolean }>`
     row-gap: 50px;
 `;
 
-export const Divisor = styled.hr`
+export const Divisor = styled.hr<{ margin?: string }>`
     width: 100%;
-    margin: 35px 0px 5px 0px;
+    margin: ${({ margin }) => margin? margin : 0};
     border-top: 5px solid #bbb;
 `;
 
@@ -93,13 +93,36 @@ export const ShortsTitleImage = styled.img`
     box-sizing: border-box;
 `;
 
-export const ContainerShorts = styled.div<{ openMenu: boolean }>`
+export const ContainerShorts = styled.div<{ openMenu: boolean, openShorts: boolean }>`
     width: 100%;
     max-width: 1600px;
+    height: ${({ openShorts}) => openShorts? '750px' : '345px'};
     box-sizing: border-box;
     padding: 0px 13px 0px 13px;
     display: grid;
     grid-template-columns: ${({ openMenu}) => openMenu? 'repeat(7, 1fr)' : 'repeat(8, 1fr)'};
+    overflow-y: hidden;
+    overflow-x: hidden;
     column-gap: 10px;
     row-gap: 50px;
+`;
+
+export const ButtonShorts = styled.button`
+    width: 100%;
+    height: 45px;
+    margin-top: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #fff;
+
+    :hover {
+        background-color: #f2f2f2;
+    }
+`;
+
+export const ArrowDown = styled.img`
+    width: 25px;
 `;
