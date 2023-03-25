@@ -3,6 +3,7 @@ import VideoComponent from "../../components/videoComponent/videoComponent";
 import ShortsComponent from "../../components/shortsComponent/shortsComponent";
 import ShortsIcon from '../..//assets/icons/icon_cellphone.png';
 import ArrowDownIcon from '../../assets/icons/icon_down.png';
+import ArrowUpIcon from '../../assets/icons/icon_up.png';
 import { 
     Container,
     HeaderHome,
@@ -135,7 +136,7 @@ function Home({ openMenu }: IProps){
                 <ShortsComponent />
             </ContainerShorts>
                 <ButtonShorts onClick={() => setOpenShorts(!openShorts)}>
-                    <ArrowDown alt="" src={ArrowDownIcon} />
+                    <ArrowDown alt="" src={`${openShorts? ArrowUpIcon : ArrowDownIcon}`} />
                 </ButtonShorts>
             <Divisor margin='1px 0px 5px 0px' />
         </Container>
