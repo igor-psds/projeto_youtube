@@ -34,7 +34,7 @@ export const UserStorage = ({ children }: any) => {
             setToken(data.token);
             getUser(data.token);
         }).catch ((error) => {
-            console.log('Log-in no possible', error);
+            console.log('Log-in not possible', error);
         })
     }
 

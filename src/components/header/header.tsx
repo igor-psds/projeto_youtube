@@ -45,7 +45,7 @@ import ArrowRightIcon from '../../assets/icons/icon_right.png';
 import FeedbackIcon from '../../assets/icons/icon_feedback.png';
 
 function Header(){
-    const { login, logOut } = useContext(UserContext);
+    const { login, logOut, user } = useContext(UserContext);
 
     const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -89,7 +89,7 @@ function Header(){
                 {login? 
                     <>
                         <ButtonContainerProfile onClick={() => setOpenDropdown(!openDropdown)} >
-                            I
+                            {user.nome.charAt(0)}
                         </ButtonContainerProfile>
                         <DropdownProfile openDropdown={openDropdown} >
                             <DropdownItem>

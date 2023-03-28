@@ -123,7 +123,6 @@ export const DropdownProfile = styled.div<{ openDropdown: boolean }>`
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    display: flex;
     display: ${({ openDropdown }) => openDropdown? 'flex' : 'none'};
     flex-direction: column;
     overflow: auto;
