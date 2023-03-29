@@ -11,7 +11,7 @@ function VideoComponent({ video }: any){
             <ImageBanner src={video.image} />
             <TitleContainer>
                 <ChannelImage>
-                    I
+                    {user.nome?.charAt(0)}
                 </ChannelImage>
                 <TextContainer>
                     <Title>{video.title}</Title>

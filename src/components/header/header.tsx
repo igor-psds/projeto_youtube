@@ -89,7 +89,7 @@ function Header(){
                 {login? 
                     <>
                         <ButtonContainerProfile onClick={() => setOpenDropdown(!openDropdown)} >
-                            {user.nome.charAt(0)}
+                            {user.nome?.charAt(0)}
                         </ButtonContainerProfile>
                         <DropdownProfile openDropdown={openDropdown} >
                             <DropdownItem>
