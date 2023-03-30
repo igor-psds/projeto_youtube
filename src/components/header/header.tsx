@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { 
     Container,
     LogoContainer,
@@ -44,17 +44,20 @@ import HelpIcon from '../../assets/icons/icon_question.png';
 import ArrowRightIcon from '../../assets/icons/icon_right.png';
 import FeedbackIcon from '../../assets/icons/icon_feedback.png';
 
-function Header(){
-    const { login, logOut, user } = useContext(UserContext);
+interface IProps {
+    openDropdown: boolean
+    setOpenDropdown: (openDropdown: boolean) => void
+}
 
-    const [openDropdown, setOpenDropdown] = useState(false);
+function Header({ openDropdown, setOpenDropdown}: IProps){
+    const { login, logOut, user } = useContext(UserContext);
 
     const { openMenu, setOpenMenu } = useGlobalMenuContext();
     const navigate = useNavigate();
 
     return (
         <Container>
-            <LogoContainer>
+            <LogoContainer onClick={() => setOpenDropdown(false)} >
                 <ButtonContainer onClick={() => setOpenMenu(!openMenu)} margin='0 10px 0 0' >
                     <ButtonIcon alt="" src={HamburgerIcon} />
                 </ButtonContainer>
@@ -66,7 +69,7 @@ function Header(){
                 />
             </LogoContainer>
             
-            <SearchContainer>
+            <SearchContainer onClick={() => setOpenDropdown(false)}>
                 <SearchInputContainer>
                     <SearchInput placeholder="Pesquisar" />
                 </SearchInputContainer>
@@ -91,7 +94,7 @@ function Header(){
                         <ButtonContainerProfile onClick={() => setOpenDropdown(!openDropdown)} >
                             {user.nome?.charAt(0)}
                         </ButtonContainerProfile>
-                        <DropdownProfile openDropdown={openDropdown} >
+                        <DropdownProfile openDropdown={openDropdown}  onClick={() => setOpenDropdown(false)}>
                             <DropdownItem>
                                 <DropdownIcon alt="" src={ChannelIcon} />
                                 <span>Seu canal</span>

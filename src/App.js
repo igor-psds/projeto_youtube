@@ -11,16 +11,18 @@ import { UserStorage } from './contexts/userContext';
 import Login from './pages/login/login';
 
 function App() {
-  const [openMenu, setOpenMenu] = useState(true)
+  const [openMenu, setOpenMenu] = useState(true);
+
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   return (
     <UserStorage>  
       <BrowserRouter>
         <div className="App">
           <GlobalMenuContext.Provider value={{openMenu, setOpenMenu}}>
-            <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
-            <div style={{ width: '100%', display: 'flex' }}>
-              <Menu openMenu={openMenu} />
+            <Header openMenu={openMenu} setOpenMenu={setOpenMenu} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
+            <div style={{ width: '100%', display: 'flex' }} onClick={() => setOpenDropdown(false)}>
+              <Menu openMenu={openMenu} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
               <RoutesContainer openMenu={openMenu}>
                 <Routes>
                   <Route path='/' element={<Home openMenu={openMenu} />} />

@@ -70,11 +70,16 @@ interface IProps {
     openMenu: boolean;
 }
 
-function Menu({ openMenu }: IProps){
+interface IProps {
+    openDropdown: boolean
+    setOpenDropdown: (openDropdown: boolean) => void
+}
+
+function Menu({ openMenu, setOpenDropdown }: IProps){
     const navigate = useNavigate();
 
     return (
-        <Container openMenu={openMenu}>
+        <Container openMenu={openMenu} onClick={() => setOpenDropdown(false)}>
             <div style={{width: '100%'}}>
                 {items1.map((item) => (
                     <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>
