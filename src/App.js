@@ -9,6 +9,7 @@ import { RoutesContainer } from './components/routesContainer/routesContainer';
 import { GlobalMenuContext } from './contexts/menuContext';
 import { UserStorage } from './contexts/userContext';
 import Login from './pages/login/login';
+import SignUp from './pages/signup/sigup';
 
 function App() {
   const [openMenu, setOpenMenu] = useState(true);
@@ -29,6 +30,7 @@ function App() {
                   <Route path='/library' element={<Library />} />
                   <Route path='/history' element={<History />} />
                   <Route path='/login' element={<Login />} />
+                  <Route path='/signup' element={<SignUp />} />
                 </Routes>
               </RoutesContainer>
             </div>

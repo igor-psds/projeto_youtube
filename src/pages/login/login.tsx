@@ -30,11 +30,11 @@ function Login(){
                         <span>Prosseguir no YouTube</span>
                     </LoginTexts>
                     <Fieldsets>
-                        <Inputs placeholder="Email:" type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Inputs placeholder="Email" type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                         <span>Esqueceu seu e-mail?</span>
                     </Fieldsets>
                     <Fieldsets>
-                        <Inputs placeholder="Senha:" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <Inputs placeholder="Senha" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                         <span>Esqueceu sua senha?</span>
                     </Fieldsets>
                     <div style={{ width: '100%', borderRadius: '15px' }} onClick={() => navigate('/')}>
@@ -42,7 +42,7 @@ function Login(){
                     </div>
                     <SignUpContainer>
                         <span>Não tem uma conta?</span>
-                        <SignUpButton>Criar conta</SignUpButton>
+                        <SignUpButton onClick={() => navigate('/signup')}>Criar conta</SignUpButton>
                     </SignUpContainer>
                 </LoginContainer>
             </DivLoginContainer>
