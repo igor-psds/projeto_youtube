@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import { UserContext } from '../../contexts/userContext';
 import { 
     Container,
@@ -18,6 +19,8 @@ function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigate = useNavigate();
+
     return (
         <Container>
             <DivLoginContainer>
@@ -34,7 +37,9 @@ function Login(){
                         <Inputs placeholder="Senha:" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                         <span>Esqueceu sua senha?</span>
                     </Fieldsets>
-                    <Button onClick={() => handleLogin(email, password)} >Login</Button>
+                    <div style={{ width: '100%', borderRadius: '15px' }} onClick={() => navigate('/')}>
+                        <Button onClick={() => handleLogin(email, password)} >Login</Button>
+                    </div>
                     <SignUpContainer>
                         <span>Não tem uma conta?</span>
                         <SignUpButton>Criar conta</SignUpButton>

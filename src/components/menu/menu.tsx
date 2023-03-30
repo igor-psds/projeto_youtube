@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { 
     Container,
     MenuItem,
@@ -30,6 +31,7 @@ import ReportIcon from '../../assets/icons/icon_flag.png';
 import HelpIcon from '../../assets/icons/icon_question.png';
 import FeedbackIcon from '../../assets/icons/icon_feedback.png';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from "../../contexts/userContext";
 
 const items1 = [
     {name: 'Início', link: '/', src: HomeIcon},
@@ -40,7 +42,7 @@ const items2 = [
     {name: 'Biblioteca', link: '/library', src: LibraryIcon},
     {name: 'Histórico', link: '/history', src: HistoryIcon}
 ];
-const items3 = [{name: 'Fazer Login', link: '/sign-in', src: LoginIcon}];
+const items3 = [{name: 'Fazer Login', link: '/login', src: LoginIcon}];
 const items4 = [
     {name: 'Em alta', link: '/trending', src: TrendingIcon},
     {name: 'Música', link: '/music', src: MusicIcon},
@@ -78,6 +80,8 @@ interface IProps {
 function Menu({ openMenu, setOpenDropdown }: IProps){
     const navigate = useNavigate();
 
+    const { login } = useContext(UserContext);
+
     return (
         <Container openMenu={openMenu} onClick={() => setOpenDropdown(false)}>
             <div style={{width: '100%'}}>
@@ -99,14 +103,25 @@ function Menu({ openMenu, setOpenDropdown }: IProps){
             </div>
             <Divisor openMenu={openMenu} />
             <ItemContainerSumir openMenu={openMenu}>
-                <span className="login-texto">Faça login para curtir vídeos, comentar e se inscrever.</span>
-                {items3.map((item) => (
-                    <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>
-                        <ButtonIcon alt="" src={item.src} />
-                        <span>{item.name}</span>
-                    </MenuItem>
-                ))}
-                <Divisor openMenu={openMenu}/>
+            {login? 
+                    <>
+                        <h3>Inscrições</h3>
+                        <span className="login-texto">Você não se inscreveu a um canal ainda</span>
+                        <Divisor openMenu={openMenu}/>
+                    </>
+                :
+                    <>
+                        <span className="login-texto">Faça login para curtir vídeos, comentar e se inscrever.</span>
+                        {items3.map((item) => (
+                            <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>
+                                <ButtonIcon alt="" src={item.src} />
+                                <span>{item.name}</span>
+                            </MenuItem>
+                        ))}
+                        <Divisor openMenu={openMenu}/>
+                    </>
+                    
+                }
                 <h3>Explorar</h3>
                 {items4.map((item) => (
                     <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>

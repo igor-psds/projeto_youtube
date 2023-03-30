@@ -26,8 +26,6 @@ import VideoIcon from '../../assets/camera_yt_project.png';
 import NotificationIcon from '../../assets/sino_yt_project.png';
 import LoginIcon from '../../assets/icons/icon_user.png';
 import { useGlobalMenuContext } from "../../contexts/menuContext";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/userContext";
 import ChannelIcon from '../../assets/icons/icon_channel.png';
 import CamIcon from '../../assets/icons/icon_camcorder.png';
 import SwitchAccountIcon from '../../assets/icons/icon_user-account.png';
@@ -43,6 +41,8 @@ import SettingsIcon from '../../assets/icons/icon_settings.png';
 import HelpIcon from '../../assets/icons/icon_question.png';
 import ArrowRightIcon from '../../assets/icons/icon_right.png';
 import FeedbackIcon from '../../assets/icons/icon_feedback.png';
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 interface IProps {
     openDropdown: boolean
