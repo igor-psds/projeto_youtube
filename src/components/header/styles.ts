@@ -130,6 +130,32 @@ export const DropdownProfile = styled.div<{ openDropdown: boolean }>`
     overflow-x: hidden;
 `;
 
+export const InfoSection = styled.div`
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+`;
+
+export const ProfileImage = styled.div`
+    background-color: aqua;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: default;
+`;
+
+export const Info = styled.div`
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+`;
+
 export const Divisor = styled.hr`
     width: 100%;
     border-top: 1px solid #bbb;
@@ -137,7 +163,7 @@ export const Divisor = styled.hr`
 
 export const DropdownItem = styled.div`
     width: 100%;
-    min-height: 45px;
+    min-height: 42px;
     cursor: pointer;
     padding: 2px 15px;
     box-sizing: border-box;

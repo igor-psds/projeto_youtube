@@ -13,6 +13,9 @@ import {
     SignInButton,
     SignInButtonIcon,
     DropdownProfile,
+    InfoSection,
+    ProfileImage,
+    Info,
     Divisor,
     DropdownItem,
     DropdownIcon,
@@ -95,6 +98,20 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
                             {user.nome?.charAt(0)}
                         </ButtonContainerProfile>
                         <DropdownProfile openDropdown={openDropdown}  onClick={() => setOpenDropdown(false)}>
+                            <InfoSection>
+                                <ProfileImage>
+                                    {user.nome?.charAt(0)}
+                                </ProfileImage>
+                                <Info>
+                                    <span>
+                                        {user.nome}
+                                    </span>
+                                    <span>
+                                        {user.email}
+                                    </span>
+                                </Info>
+                            </InfoSection>
+                            <Divisor />
                             <DropdownItem>
                                 <DropdownIcon alt="" src={ChannelIcon} />
                                 <span>Seu canal</span>
