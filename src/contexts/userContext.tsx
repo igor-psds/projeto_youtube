@@ -38,12 +38,17 @@ export const UserStorage = ({ children }: any) => {
         })
     }
 
+    const signUp = (name: string, email: string, password: string) => {
+        api.post('/user/sign-up', {name, email, password})
+    }
+
     return (
         <UserContext.Provider value={{
             login,
             user,
             handleLogin,
-            logOut
+            logOut,
+            signUp
         }}>
             {children}
         </UserContext.Provider>

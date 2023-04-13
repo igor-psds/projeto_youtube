@@ -1,0 +1,26 @@
+Sprig:
+-> email: sprigboonchuy@gmail.com
+-> senha: spranneaganisttheworld
+
+Igor:
+-> email: igormail@gmail.com
+
+King:
+-> email: weh@gmail.com
+-> senha: KingClawthorne
+
+Xirog:
+-> email: Xirogmail@gmail.com
+-> senha: senha123
+
+Chriss:
+-> email: chrissmail@gmail.com
+-> senha: senha1234
+
+Hooty:
+-> email: hoothoot@gmail.com
+-> senha: BestFriendLulu
+
+Chriss2:
+-> email: secondchrissmail@gmail.com
+-> senha: senha1234
