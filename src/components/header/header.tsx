@@ -116,7 +116,7 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
                                 <DropdownIcon alt="" src={ChannelIcon} />
                                 <span>Seu canal</span>
                             </DropdownItem>
-                            <DropdownItem onClick={() => navigate('/')} >
+                            <DropdownItem onClick={() => navigate('/upload')} >
                                 <DropdownIcon alt="" src={CamIcon} />
                                 <span>YouTube Studio</span>
                             </DropdownItem>

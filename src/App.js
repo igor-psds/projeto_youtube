@@ -10,6 +10,7 @@ import { GlobalMenuContext } from './contexts/menuContext';
 import { UserStorage } from './contexts/userContext';
 import Login from './pages/login/login';
 import SignUp from './pages/signup/sigup';
+import VideoUpload from './pages/videoUpload/videoUpload';
 
 function App() {
   const [openMenu, setOpenMenu] = useState(true);
@@ -31,6 +32,7 @@ function App() {
                   <Route path='/history' element={<History />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/signup' element={<SignUp />} />
+                  <Route path='/upload' element={<VideoUpload />} />
                 </Routes>
               </RoutesContainer>
             </div>
