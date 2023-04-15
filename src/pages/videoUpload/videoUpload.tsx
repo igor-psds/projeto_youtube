@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 import { 
@@ -17,9 +17,11 @@ function VideoUpload(){
 
     const navigate = useNavigate();
 
-    const { user } = useContext(UserContext);
+    const { user, createVideo } = useContext(UserContext);
 
     const user_id = user.id;
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
 
     return (
         <Container>
@@ -29,15 +31,17 @@ function VideoUpload(){
                 </UploadTitle>
                 <VideoInputs>
                     <Fieldsets>
-                        <TextAreaTitle placeholder="Título (obrigatório)" maxLength={50} />
+                        <TextAreaTitle placeholder="Título (obrigatório)" maxLength={50} value={title} onChange={(e) => setTitle(e.target.value)} />
                     </Fieldsets>
                     <Fieldsets>
-                        <TextAreaDescription placeholder="Descrição" maxLength={300} />
+                        <TextAreaDescription placeholder="Descrição" maxLength={300} value={description} onChange={(e) => setDescription(e.target.value)} />
                     </Fieldsets>
                 </VideoInputs>
                 <ButtonsContainer>
                     <Button onClick={() => navigate('/')}>Cancelar</Button>
-                    <Button>Enviar</Button>
+                    <div onClick={() => alert('Video criado com sucesso')}>
+                        <Button onClick={() => createVideo(title, description, user.id)} >Enviar</Button>
+                    </div>
                 </ButtonsContainer>
             </UploadContainer>
         </Container>

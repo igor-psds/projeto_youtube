@@ -42,13 +42,18 @@ export const UserStorage = ({ children }: any) => {
         api.post('/user/sign-up', {name, email, password})
     }
 
+    const createVideo = (title: any, description: any, user_id: any) => {
+        api.post('/videos/create-video', {title, description, user_id}, {headers:{Authorization: token}})
+    }
+
     return (
         <UserContext.Provider value={{
             login,
             user,
             handleLogin,
             logOut,
-            signUp
+            signUp,
+            createVideo
         }}>
             {children}
         </UserContext.Provider>
