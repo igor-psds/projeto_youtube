@@ -11,6 +11,7 @@ import { UserStorage } from './contexts/userContext';
 import Login from './pages/login/login';
 import SignUp from './pages/signup/sigup';
 import VideoUpload from './pages/videoUpload/videoUpload';
+import SearchResults from './pages/searchResults/searchResults';
 
 function App() {
   const [openMenu, setOpenMenu] = useState(true);
@@ -33,6 +34,7 @@ function App() {
                   <Route path='/login' element={<Login />} />
                   <Route path='/signup' element={<SignUp />} />
                   <Route path='/upload' element={<VideoUpload />} />
+                  <Route path='/search-results' element={<SearchResults />} />
                 </Routes>
               </RoutesContainer>
             </div>

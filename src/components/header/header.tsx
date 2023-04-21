@@ -76,9 +76,11 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
                 <SearchInputContainer>
                     <SearchInput placeholder="Pesquisar" />
                 </SearchInputContainer>
-                <SearchButton>
-                    <ButtonIcon alt="" src={SearchIcon} />
-                </SearchButton>
+                <div onClick={() => navigate('/search-results')}>
+                    <SearchButton>
+                        <ButtonIcon alt="" src={SearchIcon} />
+                    </SearchButton>
+                </div>
                 <ButtonContainer margin='0 0 0 10px' >
                     <ButtonIcon alt="" src={MicIcon} />
                 </ButtonContainer>
