@@ -87,11 +87,11 @@ const videos = [
         time: ' 1 ano'
     },
     {
-        image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
-        title: 'Low Roar - "Everything To Lose"',
-        channel: 'LOWROARMUSIC',
-        views: '148 mil',
-        time: ' 1 ano'
+        image: 'https://i.ytimg.com/vi/yp5Pxo1n4Co/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAZusamOCp8mReUM5PXx3vRm6OmXQ',
+        title: 'Barulho de Chuva para Dormir Profundamente e Relaxar - Som de Chuva',
+        channel: 'Natureza Relaxante',
+        views: '3,7 mil',
+        time: ' 3 meses'
     },
 ];
 
