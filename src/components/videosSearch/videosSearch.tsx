@@ -13,24 +13,24 @@ import { UserContext } from "../../contexts/userContext";
 
 function VideosSearch({ video }: any){
 
-    const { user } = useContext(UserContext);
+    const { user} = useContext(UserContext);
 
     return (
         <Container>
-            <ImageBanner src={video.image} />
+            <ImageBanner src={'https://i.ytimg.com/vi/jfKfPfyJRdk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD2EFON1LtcckqLkCokLTCzk0l5Jw'} />
             <TitleContainer>
                 <TextContainer>
                     <Title>{video.title}</Title>
-                    <TextCard>{video.views} visualizações - há {video.time}</TextCard>
+                    <TextCard>1,1 mil visualizações - há 1 ano</TextCard>
                 </TextContainer>
                 <ChannelText>
                     <ChannelImage>
                         {user.nome?.charAt(0)}
                     </ChannelImage>
-                    <TextCard>{video.channel}</TextCard>
+                    <TextCard>{user.nome}</TextCard>
                 </ChannelText>
                 <div style={{marginTop: '10px'}}>
-                    <TextCard>Low Roar is: Ryan Karazija, Mike Lindsay Andrew Scheps Produced by Low Roar Additional musicians: Emma and Richard ...</TextCard>
+                    <TextCard>{video.description}</TextCard>
                 </div>
             </TitleContainer>
         </Container>

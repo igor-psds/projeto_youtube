@@ -6,6 +6,7 @@ export const UserContext = createContext({} as any);
 export const UserStorage = ({ children }: any) => {
     const [login, setLogin] = useState(false);
     const [user, setUser] = useState({});
+    const [videos, setVideos] = useState({});
     const [token, setToken] = useState(localStorage.getItem('token') as string);
 
     const getUser = (token: string) => {
@@ -46,6 +47,12 @@ export const UserStorage = ({ children }: any) => {
         api.post('/videos/create-video', {title, description, user_id}, {headers:{Authorization: token}})
     }
 
+    const searchVideo = (search: any) => {
+        api.get('/videos/search?search=' + search).then(({ data }) => {
+            setVideos(data.videos);
+        })
+    }
+
     return (
         <UserContext.Provider value={{
             login,
@@ -53,7 +60,9 @@ export const UserStorage = ({ children }: any) => {
             handleLogin,
             logOut,
             signUp,
-            createVideo
+            createVideo,
+            searchVideo,
+            videos
         }}>
             {children}
         </UserContext.Provider>

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { 
     Container,
     LogoContainer,
@@ -53,7 +53,8 @@ interface IProps {
 }
 
 function Header({ openDropdown, setOpenDropdown}: IProps){
-    const { login, logOut, user } = useContext(UserContext);
+    const { login, logOut, user, searchVideo } = useContext(UserContext);
+    const [search, setSearch] = useState('');
 
     const { openMenu, setOpenMenu } = useGlobalMenuContext();
     const navigate = useNavigate();
@@ -74,10 +75,10 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
             
             <SearchContainer onClick={() => setOpenDropdown(false)}>
                 <SearchInputContainer>
-                    <SearchInput placeholder="Pesquisar" />
+                    <SearchInput placeholder="Pesquisar" value={search} onChange={(e) => setSearch(e.target.value)} />
                 </SearchInputContainer>
                 <div onClick={() => navigate('/search-results')}>
-                    <SearchButton>
+                    <SearchButton onClick={() => searchVideo(search)}>
                         <ButtonIcon alt="" src={SearchIcon} />
                     </SearchButton>
                 </div>

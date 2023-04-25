@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import VideosSearch from "../../components/videosSearch/videosSearch";
-import HamburgerIcon from '../../assets/hamburger_yt_project.png';
 import FilterIcon from '../../assets/icons/icon_filter.png';
 import { 
     Container,
@@ -10,8 +9,9 @@ import {
     FilterButton,
     ButtonIcon
 } from "./styles";
+import { UserContext } from "../../contexts/userContext";
 
-const videos = [
+const video = [
     {
         image: 'https://i.ytimg.com/vi/N73Ue9HXQuY/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4AdQGgALgA4oCDAgAEAEYOyBZKGUwDw==&rs=AOn4CLC0iQDZ1nEy3AgsanyJJ5vpcWPnmw',
         title: 'Low Roar - "Everything To Lose"',
@@ -72,6 +72,8 @@ const videos = [
 
 function SearchResults(){
 
+    const { videos } = useContext(UserContext);
+
     return (
         <Container>
             <FilterContainer>
@@ -82,8 +84,8 @@ function SearchResults(){
             </FilterContainer>
             <Divisor margin='0px 0px 10px 0px' />
             <ContainerVideos>
-                {videos.map((video) => (
-                    <VideosSearch video={video} />
+                {videos.map((videos: any) => (
+                    <VideosSearch video={videos} />
                 ))}
             </ContainerVideos>
         </Container>
