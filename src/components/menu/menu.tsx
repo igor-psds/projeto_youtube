@@ -44,28 +44,28 @@ const items2 = [
 ];
 const items3 = [{name: 'Fazer Login', link: '/login', src: LoginIcon}];
 const items4 = [
-    {name: 'Em alta', link: '/trending', src: TrendingIcon},
-    {name: 'Música', link: '/music', src: MusicIcon},
-    {name: 'Filmes e TV', link: '/movies&tv', src: MoviesIcon},
-    {name: 'Ao vivo', link: '/live', src: LiveIcon},
-    {name: 'Jogos', link: '/gaming', src: GamesIcon},
-    {name: 'Notícias', link: '/news', src: NewsIcon},
-    {name: 'Esportes', link: '/sports', src: SportsIcon},
-    {name: 'Aprender', link: '/learning', src: LearningIcon},
-    {name: 'Moda e beleza', link: '/fashion&beauty', src: FashionIcon}
+    {name: 'Em alta', src: TrendingIcon},
+    {name: 'Música', src: MusicIcon},
+    {name: 'Filmes e TV', src: MoviesIcon},
+    {name: 'Ao vivo', src: LiveIcon},
+    {name: 'Jogos', src: GamesIcon},
+    {name: 'Notícias', src: NewsIcon},
+    {name: 'Esportes', src: SportsIcon},
+    {name: 'Aprender', src: LearningIcon},
+    {name: 'Moda e beleza', src: FashionIcon}
 ];
-const items5 = [{name: 'Procurar canais', link: '/channels', src: ChannelsIcon}];
+const items5 = [{name: 'Procurar canais', src: ChannelsIcon}];
 const items6 = [
-    {name: 'YouTube Premium', link: '/yt_premium', src: YtPremiumIcon},
-    {name: 'YouTube Music', link: '/yt_music', src: YtMusicIcon},
-    {name: 'YouTube Kids', link: '/yt_kids', src: YtKidsIcon},
-    {name: 'YouTube TV', link: '/yt_tv', src: YtTvIcon}
+    {name: 'YouTube Premium', src: YtPremiumIcon},
+    {name: 'YouTube Music', src: YtMusicIcon},
+    {name: 'YouTube Kids', src: YtKidsIcon},
+    {name: 'YouTube TV', src: YtTvIcon}
 ];
 const items7 = [
-    {name: 'Configurações', link: '/settings', src: SettingsIcon},
-    {name: 'Histórico de denúncia', link: '/reporthistory', src: ReportIcon},
-    {name: 'Ajuda', link: '/help', src: HelpIcon},
-    {name: 'Enviar feedback', link: '/feedback', src: FeedbackIcon}
+    {name: 'Configurações', src: SettingsIcon},
+    {name: 'Histórico de denúncia', src: ReportIcon},
+    {name: 'Ajuda', src: HelpIcon},
+    {name: 'Enviar feedback', src: FeedbackIcon}
 ];
 
 interface IProps {
@@ -124,14 +124,14 @@ function Menu({ openMenu, setOpenDropdown }: IProps){
                 }
                 <h3>Explorar</h3>
                 {items4.map((item) => (
-                    <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>
+                    <MenuItem openMenu={openMenu}>
                         <ButtonIcon alt="" src={item.src} />
                         <span>{item.name}</span>
                     </MenuItem>
                 ))}
                 <Divisor openMenu={openMenu}/>
                 {items5.map((item) => (
-                    <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>
+                    <MenuItem openMenu={openMenu}>
                         <ButtonIcon alt="" src={item.src} />
                         <span>{item.name}</span>
                     </MenuItem>
@@ -139,14 +139,14 @@ function Menu({ openMenu, setOpenDropdown }: IProps){
                 <Divisor openMenu={openMenu}/>
                 <h3>Mais do YouTube</h3>
                 {items6.map((item) => (
-                    <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>
+                    <MenuItem openMenu={openMenu}>
                         <ButtonIcon alt="" src={item.src} />
                         <span>{item.name}</span>
                     </MenuItem>
                 ))}
                 <Divisor openMenu={openMenu}/>
                 {items7.map((item) => (
-                    <MenuItem openMenu={openMenu} onClick={() => navigate(item.link)}>
+                    <MenuItem openMenu={openMenu}>
                         <ButtonIcon alt="" src={item.src} />
                         <span>{item.name}</span>
                     </MenuItem>

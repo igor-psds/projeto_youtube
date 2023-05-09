@@ -57,6 +57,7 @@ export const NavMenuItem = styled.li`
     align-items: center;
     justify-content: space-evenly;
     background-color: #f4f4f4;
+    flex: none;
 
     :hover {
         background-color: #f0f0f0;
