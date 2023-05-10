@@ -21,6 +21,11 @@ function Login(){
 
     const navigate = useNavigate();
 
+    function login(){
+        handleLogin(email, password);
+        navigate('/');
+    }
+
     return (
         <Container>
             <DivLoginContainer>
@@ -37,9 +42,7 @@ function Login(){
                         <Inputs placeholder="Senha" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                         <span>Esqueceu sua senha?</span>
                     </Fieldsets>
-                    <div style={{ width: '100%', borderRadius: '15px' }} onClick={() => navigate('/')}>
-                        <Button onClick={() => handleLogin(email, password)} >Login</Button>
-                    </div>
+                    <Button onClick={() => login()} >Login</Button>
                     <SignUpContainer>
                         <span>Não tem uma conta?</span>
                         <SignUpButton onClick={() => navigate('/signup')}>Criar conta</SignUpButton>

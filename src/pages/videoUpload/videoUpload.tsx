@@ -23,6 +23,11 @@ function VideoUpload(){
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
+    function eviarVideo(){
+        alert('Video criado com sucesso');
+        createVideo(title, description, user.id);
+    }
+
     return (
         <Container>
             <UploadContainer>
@@ -39,9 +44,7 @@ function VideoUpload(){
                 </VideoInputs>
                 <ButtonsContainer>
                     <Button onClick={() => navigate('/')}>Cancelar</Button>
-                    <div onClick={() => alert('Video criado com sucesso')}>
-                        <Button onClick={() => createVideo(title, description, user.id)} >Enviar</Button>
-                    </div>
+                    <Button onClick={() => eviarVideo()} >Enviar</Button>
                 </ButtonsContainer>
             </UploadContainer>
         </Container>

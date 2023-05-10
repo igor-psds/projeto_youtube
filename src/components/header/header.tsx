@@ -59,6 +59,12 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
     const { openMenu, setOpenMenu } = useGlobalMenuContext();
     const navigate = useNavigate();
 
+    function videoSearch(){
+        searchVideo(search);
+        navigate('/search-results')
+
+    }
+
     return (
         <Container>
             <LogoContainer onClick={() => setOpenDropdown(false)} >
@@ -77,11 +83,9 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
                 <SearchInputContainer>
                     <SearchInput placeholder="Pesquisar" value={search} onChange={(e) => setSearch(e.target.value)} />
                 </SearchInputContainer>
-                <div onClick={() => navigate('/search-results')}>
-                    <SearchButton onClick={() => searchVideo(search)}>
+                    <SearchButton onClick={() => videoSearch()}>
                         <ButtonIcon alt="" src={SearchIcon} />
                     </SearchButton>
-                </div>
                 <ButtonContainer margin='0 0 0 10px' >
                     <ButtonIcon alt="" src={MicIcon} />
                 </ButtonContainer>

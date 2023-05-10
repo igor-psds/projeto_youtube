@@ -26,6 +26,12 @@ function SignUp(){
 
     const navigate = useNavigate();
 
+    function criarConta(){
+        alert('Usuário criado com sucesso');
+        signUp(name, email, password);
+        navigate('/login');
+    }
+
     return (
         <Container>
             <DivSignUpContainer>
@@ -46,8 +52,8 @@ function SignUp(){
                         </Fieldsets>
                         <ButtonsContainer>
                             <LoginButton onClick={() => navigate('/login')}>Faça login em vez disso</LoginButton>
-                            <div onClick={() => alert('Usuário criado com sucesso')} >
-                                <Button onClick={() => signUp(name, email, password)} > Criar conta</Button>
+                            <div>
+                                <Button onClick={() => criarConta()} > Criar conta</Button>
                             </div>
                         </ButtonsContainer>
                     </InputsContainer>
