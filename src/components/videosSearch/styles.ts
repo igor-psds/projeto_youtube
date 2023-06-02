@@ -7,15 +7,29 @@ export const Container = styled.div`
 `;
 
 export const ImageBanner = styled.img`
-    width: 350px;
-    height: 210px;
-    border-radius: 15px;
+    min-width: 300px;
+    max-width: 300px;
+    height: 160px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: 50% 50%;
     cursor: pointer;
+
+    @media(max-width: 600px) {
+        min-width: 300px;
+        max-width: 300px;
+        height: 260px;
+    }
+
+    @media(max-width: 414px) {
+        min-width: 100%;
+        max-width: 100%;
+        height: 190px;
+    }
 `;
 
 export const TitleContainer = styled.div`
     width: 100%;
-    height: 120px;
     display: flex;
     flex-direction: column;
     padding: 5px 0px 0px 15px;

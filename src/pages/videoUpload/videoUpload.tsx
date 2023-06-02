@@ -19,7 +19,6 @@ function VideoUpload(){
 
     const { user, createVideo } = useContext(UserContext);
 
-    const user_id = user.id;
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 

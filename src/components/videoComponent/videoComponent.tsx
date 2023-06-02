@@ -1,22 +1,26 @@
-import { useContext } from 'react';
 import { ChannelImage, Container, ImageBanner, TextCard, TextContainer, Title, TitleContainer } from "./styles";
-import { UserContext } from "../../contexts/userContext";
 
-function VideoComponent({ video }: any){
+interface Props {
+    title: string
+    thumbnail: string
+    channelImage: string
+    channelName: string
+    details: string
+}
 
-    const { user } = useContext(UserContext);
+function VideoComponent(props: Props){
 
     return (
         <Container>
-            <ImageBanner src={video.image} />
+            <ImageBanner alt='thumbnail' src={props.thumbnail} />
             <TitleContainer>
                 <ChannelImage>
-                    I
+                    {props.channelImage}
                 </ChannelImage>
                 <TextContainer>
-                    <Title>{video.title}</Title>
-                    <TextCard>{video.channel}</TextCard>
-                    <TextCard>{video.views} visualizações - há {video.time}</TextCard>
+                    <Title>{props.title}</Title>
+                    <TextCard>{props.channelName}</TextCard>
+                    <TextCard>{props.details}</TextCard>
                 </TextContainer>
             </TitleContainer>
         </Container>

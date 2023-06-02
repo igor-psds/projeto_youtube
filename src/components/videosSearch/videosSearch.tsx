@@ -11,26 +11,35 @@ import {
  } from "./styles";
 import { UserContext } from "../../contexts/userContext";
 
-function VideosSearch({ video }: any){
+interface Props {
+    title: string
+    thumbnail: string
+    channelImage: string
+    channelName: string
+    details: string
+    description: string
+}
+
+function VideosSearch(props: Props){
 
     const { user} = useContext(UserContext);
 
     return (
         <Container>
-            <ImageBanner src={'https://i.ytimg.com/vi/jfKfPfyJRdk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD2EFON1LtcckqLkCokLTCzk0l5Jw'} />
+            <ImageBanner style={{backgroundImage: `url(${props.thumbnail})`}} />
             <TitleContainer>
                 <TextContainer>
-                    <Title>{video.title}</Title>
-                    <TextCard>1,1 mil visualizações - há 1 ano</TextCard>
+                    <Title>{props.title}</Title>
+                    <TextCard>{props.details}</TextCard>
                 </TextContainer>
                 <ChannelText>
                     <ChannelImage>
-                        {user.nome?.charAt(0)}
+                        {props.channelImage}
                     </ChannelImage>
-                    <TextCard>{user.nome}</TextCard>
+                    <TextCard>{props.channelName}</TextCard>
                 </ChannelText>
                 <div style={{marginTop: '10px'}}>
-                    <TextCard>{video.description}</TextCard>
+                    <TextCard>{props.description}</TextCard>
                 </div>
             </TitleContainer>
         </Container>

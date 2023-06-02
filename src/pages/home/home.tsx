@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import VideoComponent from "../../components/videoComponent/videoComponent";
 import ShortsComponent from "../../components/shortsComponent/shortsComponent";
 import ShortsIcon from '../..//assets/icons/icon_cellphone.png';
@@ -15,8 +15,12 @@ import {
     ShortsTitleImage,
     ContainerShorts,
     ButtonShorts,
-    ArrowDown
+    ArrowDown,
 } from "./styles";
+import axios from 'axios';
+import moment from 'moment';
+import { useCategoryContext } from '../../contexts/searchCategories';
+import CategoryBar from '../../components/navMenuHome/navMenuHome';
 
 const items = [
     {name: 'Tudo', link: '/'},
@@ -36,7 +40,7 @@ const items = [
     {name: 'Animação', link: '/'}
 ];
 
-const videos = [
+const video = [
     {
         image: 'https://i.ytimg.com/vi/QNTeq4QdOsQ/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBZ_trcdGx2MV3RHrm5zrY22l9UjQ',
         title: 'Top 20 CSS & Javascript Effects | March 2020',
@@ -100,23 +104,108 @@ interface IProps {
 }
 
 function Home({ openMenu }: IProps){
-    
+
     const [openShorts, setOpenShorts] = useState(false);
+
+    interface Videos {
+        id: string;
+        snippet: {
+            title: string;
+            thumbnails: {
+                high: {
+                    url: string;
+                }
+                maxres: {
+                    url: string;
+                }
+            }
+            channelTitle: string;
+            publishedAt: string;
+        },
+        statistics: {
+            viewCount: string;
+        }
+    }
+
+    const [videos, setVideos] = useState<Videos[]>([])
+    const {categoryId} = useCategoryContext()
+    
+   useEffect(() => {
+    load()
+   }, [categoryId])
+
+    const KEY_API = 'AIzaSyA04r8wgiuig4kn7_OFhhaRkaU1xsQqRW0'
+
+    const urlApi = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&
+    hl=pt_BR&maxResults=20&regionCode=us&videoCategoryId=${categoryId}&key=${KEY_API}`
+
+    async function load() {
+        try {
+            const resposta = await axios.get(urlApi)
+            setVideos(resposta.data.items)
+        }catch(erro){
+            console.log(erro)
+        }
+    }
+
+    function formatViewCount(viewCount: number): string {
+        if (viewCount >= 1000000) {
+            return `${(viewCount / 1000000).toFixed(0)} mi de visualizações`;
+        }else if (viewCount >= 1000) {
+            return `${(viewCount / 1000).toFixed(0)} mil visualizações`;
+        }else {
+            return`${viewCount} visualizações`;
+        }
+    }
+
+    function getPublishedTime(publishedAt: string) {
+        const now = moment();
+        const publishedTime = moment(publishedAt);
+        const diffDays = now.diff(publishedTime, 'days');
+
+        if (diffDays <=0) {
+            return 'hoje';
+        }else if (diffDays === 1) {
+            return 'há 1 dia';
+        }else if (diffDays <= 7) {
+            return `há ${diffDays} dias`;
+        }else if (diffDays <= 30) {
+            const diffWeeks = Math.floor(diffDays / 7);
+            if (diffWeeks === 1) {
+                return 'há 1 ssemana';
+            } else {
+                return `há ${diffWeeks} semanas`;
+            }
+        } else if (diffDays <= 365) {
+            const diffMonths = Math.floor(diffDays / 30);
+            if (diffMonths === 1) {
+                return 'há 1 mês';
+            } else {
+                return `há ${diffMonths} meses`;
+            }
+        } else {
+            const diffYears = Math.floor(diffDays / 365);
+            if (diffYears === 1) {
+                return 'há 1 ano'
+            } else {
+                return `há ${diffYears} anos`;
+            }
+        }
+    }
 
     return (
         <Container>
-            <HeaderHome>
-                <NavMenu>
-                    {items.map((item) => (
-                        <NavMenuItem>
-                            <span>{item.name}</span>
-                        </NavMenuItem>
-                    ))}
-                </NavMenu>
-            </HeaderHome>
+            <CategoryBar openMenu={openMenu}></CategoryBar>
             <ContainerVideos openMenu={openMenu}>
                 {videos.map((video) => (
-                    <VideoComponent video={video} />
+                    <VideoComponent
+                        title={video.snippet.title}
+                        thumbnail={video.snippet.thumbnails.maxres?.url || video.snippet.thumbnails.high?.url}
+                        channelImage={video.snippet.channelTitle.charAt(0).toUpperCase()}
+                        channelName={video.snippet.channelTitle}
+                        details={`${formatViewCount(Number(video.statistics.viewCount))} - ${getPublishedTime(video.snippet.publishedAt)}`}
+                        key={video.id}
+                    />
                 ))}
             </ContainerVideos>
             <Divisor margin='35px 0px 5px 0px' />

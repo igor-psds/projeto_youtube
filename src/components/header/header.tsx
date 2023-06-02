@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { 
     Container,
     LogoContainer,
@@ -46,6 +46,8 @@ import ArrowRightIcon from '../../assets/icons/icon_right.png';
 import FeedbackIcon from '../../assets/icons/icon_feedback.png';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
+import { useSearchContext } from '../../contexts/searchContext';
+import { useCategoryContext } from '../../contexts/searchCategories';
 
 interface IProps {
     openDropdown: boolean
@@ -54,7 +56,7 @@ interface IProps {
 
 function Header({ openDropdown, setOpenDropdown}: IProps){
     const { login, logOut, user, searchVideo } = useContext(UserContext);
-    const [search, setSearch] = useState('');
+    const [search, setSearch2] = useState('');
 
     const { openMenu, setOpenMenu } = useGlobalMenuContext();
     const navigate = useNavigate();
@@ -64,6 +66,42 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
         navigate('/search-results')
 
     }
+
+    const [clearButton, setClearButton] = useState(false);
+
+    const [openSearch, setOpenSearch] = useState(false);
+    
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const Search = () => {
+        setOpenSearch(true)
+        if(inputRef.current) {
+            inputRef.current.focus()
+        }
+    }
+
+    const {setSearch} = useSearchContext()
+
+    const [inputValue, setInputValue] = useState('');
+
+    function handleInput(inputValue: string) {
+        setInputValue(inputValue)
+        if(inputValue === '') {
+            setClearButton(false)
+        } else {
+            setClearButton(true)
+        }
+    }
+
+    const clearInput = () => {
+        setInputValue('')
+        setClearButton(false)
+        if (inputRef.current) {
+            inputRef.current.focus()
+        }
+    }
+
+    const {setCategoryId} = useCategoryContext()
 
     return (
         <Container>
@@ -81,9 +119,30 @@ function Header({ openDropdown, setOpenDropdown}: IProps){
             
             <SearchContainer onClick={() => setOpenDropdown(false)}>
                 <SearchInputContainer>
-                    <SearchInput placeholder="Pesquisar" value={search} onChange={(e) => setSearch(e.target.value)} />
+                    <SearchInput
+                     ref={inputRef}
+                     value={inputValue} 
+                     placeholder="Pesquisar" 
+                     onChange={(e) => {
+                        handleInput(e.target.value)
+                     }} 
+                     onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            setSearch(inputValue)
+                            navigate('/search-results')
+                            setOpenSearch(false)
+                        }
+                     }}
+                    />
                 </SearchInputContainer>
-                    <SearchButton onClick={() => videoSearch()}>
+                    <SearchButton onClick={() => {
+                        if (inputValue.trim() === '') {
+                            alert('Pesquisa vazia')
+                            return;
+                        }
+                        setSearch(inputValue)
+                        navigate('/search-results')
+                    }}>
                         <ButtonIcon alt="" src={SearchIcon} />
                     </SearchButton>
                 <ButtonContainer margin='0 0 0 10px' >

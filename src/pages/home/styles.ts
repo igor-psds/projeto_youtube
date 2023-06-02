@@ -2,12 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    max-width: 1600px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
 `;
 
 export const HeaderHome = styled.header`
@@ -21,7 +15,7 @@ export const HeaderHome = styled.header`
     margin-bottom: 20px;
     background-color: #fff;
     position: sticky;
-    top: 6.8%;
+    top: 5.9%;
 `;
 
 export const NavMenu = styled.nav`
@@ -71,6 +65,8 @@ export const ContainerVideos = styled.div<{ openMenu: boolean }>`
     grid-template-columns: ${({ openMenu}) => openMenu? 'repeat(4, 1fr)' : 'repeat(5, 1fr)'};
     column-gap: 20px;
     row-gap: 50px;
+    margin-top: 65px;
+    flex-wrap: wrap;
 `;
 
 export const Divisor = styled.hr<{ margin?: string }>`
