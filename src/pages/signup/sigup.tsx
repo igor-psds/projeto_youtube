@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { UserContext } from '../../contexts/userContext';
 import { 
     Container,
@@ -9,6 +9,9 @@ import {
     SignUpTexts,
     Fieldsets,
     Inputs,
+    InvalidMessage,
+    FieldsetPassword,
+    InputPassword,
     ButtonsContainer,
     Button,
     LoginButton,
@@ -23,13 +26,74 @@ function SignUp(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordCompare, setPasswordCompare] = useState('');
+    //
+    const [validName, setValidName] = useState(true);
+    const [validEmail, setValidEmail] = useState(true);
+    const [validEmailFormat, setValidEmailFormat] = useState(true);
+    const [validPassword, setValidPassword] = useState(true);
+    const [samePassword, setSamePassword] = useState(true);
+
+    const nameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
+    const passwordCompareRef = useRef<HTMLInputElement>(null);
 
     const navigate = useNavigate();
 
     function criarConta(){
-        alert('Usuário criado com sucesso');
-        signUp(name, email, password);
-        navigate('/login');
+        if (name.trim() !== '') {
+            setValidName(true);
+        }
+        if (email.trim() !== '') {
+            setValidEmail(true)
+        }
+        if (password.trim() !== '' && passwordCompare.trim() !== '') {
+            setValidPassword(true);
+        }
+        if (name.trim() === '' && email.trim() === '' && password.trim() === '') {
+            setValidName(false);
+            setValidEmail(false);
+            setValidPassword(false);
+            if (nameRef.current) {
+                nameRef.current.focus();
+            }
+        } else if (name.trim() === '') {
+            setValidName(false);
+            if (nameRef.current) {
+                nameRef.current.focus();
+            }
+        } else if (email.trim() === '') {
+            setValidEmail(false);
+            setValidEmailFormat(true);
+            if (emailRef.current) {
+                emailRef.current.focus();
+            }
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            setValidEmailFormat(false);
+            setValidEmail(false);
+            if (emailRef.current) {
+                emailRef.current.focus();
+            }
+        } else if (password.trim() === '') {
+            setValidPassword(false);
+            if (passwordRef.current) {
+                passwordRef.current.focus();
+            }
+        } else if (passwordCompare.trim() === '') {
+            setValidPassword(false);
+            if (passwordCompareRef.current) {
+                passwordCompareRef.current.focus();
+            }
+        } else if (password !== passwordCompare) {
+            setValidPassword(false);
+            setSamePassword(false);
+            if (passwordCompareRef.current) {
+                passwordCompareRef.current.focus();
+            }
+        } else {
+            signUp(name, email, password);
+        }
     }
 
     return (
@@ -42,14 +106,90 @@ function SignUp(){
                             <span>Prosseguir no YouTube</span>
                         </SignUpTexts>
                         <Fieldsets>
-                            <Inputs placeholder="Nome" type='name' value={name} onChange={(e) => setName(e.target.value)} />
+                            <div>
+                                <Inputs
+                                    valid={validName}
+                                    ref={nameRef}
+                                    placeholder="Nome"
+                                    type='name'
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                                <InvalidMessage valid={validName}>Digite um nome</InvalidMessage>
+                            </div>
                         </Fieldsets>
                         <Fieldsets>
-                            <Inputs placeholder="Seu endereço de e-mail" type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <div>
+                                <Inputs
+                                    valid={validEmail}
+                                    ref={emailRef}
+                                    placeholder="Seu endereço de e-mail"
+                                    type='email'
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <InvalidMessage valid={validEmail}>
+                                    {
+                                        validEmailFormat?
+                                        'Digite seu email'
+                                        :
+                                        'Email inválido'
+                                    }
+                                </InvalidMessage>
+                            </div>
                         </Fieldsets>
-                        <Fieldsets>
-                            <Inputs placeholder="Senha" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                        </Fieldsets>
+                        <FieldsetPassword>
+                            <div>
+                                <InputPassword
+                                    valid={validPassword}
+                                    ref={passwordRef}
+                                    placeholder="Senha"
+                                    type='password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === " ") {
+                                            e.preventDefault();
+                                        }
+                                        if (e.key === 'Enter') {
+                                            criarConta();
+                                        }
+                                    }}
+                                />
+                                <InvalidMessage valid={validPassword}>
+                                    {samePassword?
+                                        'Digite uma senha'
+                                        :
+                                        'Verifique se as senhas estão iguais'
+                                    }
+                                </InvalidMessage>
+                            </div>
+                            <div>
+                                <InputPassword
+                                    valid={validPassword}
+                                    ref={passwordCompareRef}
+                                    placeholder="Comfirme sua senha"
+                                    type='password'
+                                    value={passwordCompare}
+                                    onChange={(e) => setPasswordCompare(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === " ") {
+                                            e.preventDefault();
+                                        }
+                                        if (e.key === 'Enter') {
+                                            criarConta();
+                                        }
+                                    }}
+                                />
+                                <InvalidMessage valid={validPassword}>
+                                    {samePassword?
+                                        'Digite a mesma senha'
+                                        :
+                                        'Verifique se as senhas estão iguais'
+                                    }
+                                </InvalidMessage>
+                            </div>
+                        </FieldsetPassword>
                         <ButtonsContainer>
                             <LoginButton onClick={() => navigate('/login')}>Faça login em vez disso</LoginButton>
                             <div>

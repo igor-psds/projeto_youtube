@@ -19,8 +19,8 @@ function App() {
   const [openDropdown, setOpenDropdown] = useState(false);
 
   return (
-    <UserStorage>  
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserStorage>  
         <div className="App">
           <GlobalMenuContext.Provider value={{openMenu, setOpenMenu}}>
             <Header openMenu={openMenu} setOpenMenu={setOpenMenu} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} />
@@ -40,8 +40,8 @@ function App() {
             </div>
           </GlobalMenuContext.Provider>
         </div>
-      </BrowserRouter>
-    </UserStorage>
+      </UserStorage>
+    </BrowserRouter>
   );
 }
 

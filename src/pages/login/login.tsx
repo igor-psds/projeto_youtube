@@ -23,7 +23,6 @@ function Login(){
 
     function login(){
         handleLogin(email, password);
-        navigate('/');
     }
 
     return (
