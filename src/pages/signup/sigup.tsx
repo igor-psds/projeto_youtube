@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useContext, useRef } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { UserContext } from '../../contexts/userContext';
 import { 
     Container,
@@ -12,6 +12,7 @@ import {
     InvalidMessage,
     FieldsetPassword,
     InputPassword,
+    CheckBoxContainer,
     ButtonsContainer,
     Button,
     LoginButton,
@@ -39,7 +40,19 @@ function SignUp(){
     const passwordRef = useRef<HTMLInputElement>(null);
     const passwordCompareRef = useRef<HTMLInputElement>(null);
 
+    const [showPassword, setShowPassword] = useState(false);
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (nameRef.current !== null) {
+            nameRef.current.focus();
+        }
+    }, [])
+
+    function handleShowPassword(){
+        setShowPassword(!showPassword);
+    }
 
     function criarConta(){
         if (name.trim() !== '') {
@@ -144,7 +157,7 @@ function SignUp(){
                                     valid={validPassword}
                                     ref={passwordRef}
                                     placeholder="Senha"
-                                    type='password'
+                                    type={showPassword? 'text' : 'password'}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     onKeyDown={(e) => {
@@ -163,13 +176,17 @@ function SignUp(){
                                         'Verifique se as senhas estão iguais'
                                     }
                                 </InvalidMessage>
+                                <CheckBoxContainer>
+                                    <input type='checkbox' id='show-password' checked={showPassword} onChange={handleShowPassword}/>
+                                    <label htmlFor='show-password'>Mostrar senha</label>
+                                </CheckBoxContainer>
                             </div>
                             <div>
                                 <InputPassword
                                     valid={validPassword}
                                     ref={passwordCompareRef}
                                     placeholder="Comfirme sua senha"
-                                    type='password'
+                                    type={showPassword? 'text' : 'password'}
                                     value={passwordCompare}
                                     onChange={(e) => setPasswordCompare(e.target.value)}
                                     onKeyDown={(e) => {

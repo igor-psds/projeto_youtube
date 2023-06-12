@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 interface Valid {
     valid: boolean
-  }
+}
 
 export const Container = styled.div`
     width: 100%;
@@ -110,6 +110,14 @@ export const InputPassword = styled.input<Valid>`
     border: ${({valid}) => valid? "1px solid #000" : "1px solid red"};
     border-radius: 5px;
     display: block;
+`;
+
+export const CheckBoxContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    margin-top: 5px;
 `;
 
 export const ButtonsContainer = styled.div`

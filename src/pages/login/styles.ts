@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Valid {
+    valid: boolean
+}
+
 export const Container = styled.div`
     width: 100%;
     max-width: 1600px;
@@ -59,23 +63,38 @@ export const Fieldsets = styled.fieldset`
     margin: 0 0 15px;
     display: flex;
     flex-direction: column;
-
-    span {
-        width: 152px;
-        font-weight: 400;
-        font-size: 16px;
-        margin: 2px 0px 0px 0px;
-        color: #005ce6;
-        cursor: pointer;
-    }
 `;
 
-export const Inputs = styled.input`
+export const Inputs = styled.input<Valid>`
     width: 100%;
     height: 45px;
     padding: 0px 3px;
+    border: ${({valid}) => valid? "1px solid #000" : "1px solid red"};
     border-radius: 5px;
     display: block;
+`;
+
+export const InvalidMessage = styled.span<Valid>`
+    display: ${({valid}) => valid? 'none' : 'block'};
+    font-size: 14px;
+    color: red;
+`;
+
+export const ForgotSpan = styled.span`
+    width: 152px;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 2px 0px 0px 0px;
+    color: #005ce6;
+    cursor: pointer;
+`;
+
+export const CheckBoxContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    margin-top: 5px;
 `;
 
 export const Button = styled.button`
