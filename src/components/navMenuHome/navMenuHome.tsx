@@ -7,7 +7,8 @@ import {
     SliderContent,
     Button
 } from "./styles"
-import ArrowDownIcon from "../../assets/icons/icon_down.png"
+import ArrowRightIcon from "../../assets/icons/icon_right.png"
+import ArrowLeftIcon from "../../assets/icons/icon_left.png"
 import { useCategoryContext } from "../../contexts/searchCategories";
 
 interface IProps {
@@ -73,7 +74,7 @@ function CategoryBar({ openMenu }: IProps) {
     return (
         <Container openMenu={openMenu}>
             <SliderButton onClick={handleBackClick}>
-                <SliderButtonIcon alt="back icon" src={ArrowDownIcon} />
+                <SliderButtonIcon alt="back icon" src={ArrowLeftIcon} />
             </SliderButton>
             <Slider>
                 <SliderContent
@@ -87,7 +88,7 @@ function CategoryBar({ openMenu }: IProps) {
                     </SliderContent>
             </Slider>
             <SliderButton onClick={handleNextClick}>
-                <SliderButtonIcon alt="next icon" src={ArrowDownIcon} />
+                <SliderButtonIcon alt="next icon" src={ArrowRightIcon} />
             </SliderButton>
         </Container>
     )
